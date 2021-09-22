@@ -33,5 +33,6 @@ export default {
       extract: 'bundle.css'
     })
   ],
+  // 声明vue为外部组件，不要打包到组件库
   external: ['vue']
 };
