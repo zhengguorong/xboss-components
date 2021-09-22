@@ -1,12 +1,19 @@
 import { App } from 'vue';
-import toggleButton from './toggle-button';
+import tag, { Tag } from './tag';
+import toggleButton, { ToggleButton } from './toggle-button';
 
+const components = [tag, toggleButton];
+// 全局注册
 const install = (app: App) => {
-  // 注册全局组件
-  app.component('ToggleButton', toggleButton);
+  components.forEach((component) => {
+    // 因为导入的是组件，可以用app.component方法注册
+    app.component(component.name, component);
+  });
 };
 
-// 作为插件导出，暴露install方法
+// 按需加载
+export { Tag, ToggleButton };
+
 export default {
   install
 };

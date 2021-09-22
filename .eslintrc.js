@@ -1,5 +1,12 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: {
+      js: 'espree',
+      ts: '@typescript-eslint/parser',
+      '<template>': 'espree'
+    }
+  },
   plugins: ['@typescript-eslint'],
   // extends有顺序关系，规则按从左到右应用，假设把prettier放最左边，他的规则会被后面规则覆盖
   extends: [

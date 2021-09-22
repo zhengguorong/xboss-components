@@ -1,5 +1,7 @@
 import esBuild from 'rollup-plugin-esbuild';
+import vuePlugin from 'rollup-plugin-vue';
 import vueJsx from 'rollup-plugin-vue-jsx-compat';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
   // 入口文件
@@ -22,9 +24,13 @@ export default {
   ],
   plugins: [
     vueJsx(),
+    vuePlugin(),
     esBuild({
       jsxFactory: 'vueJsxCompat',
       tsconfig: 'tsconfig.json'
+    }),
+    postcss({
+      extract: 'bundle.css'
     })
   ],
   external: ['vue']
